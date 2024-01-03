@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Messaging</title>
@@ -37,15 +38,30 @@
             var messageInput = document.getElementById('messageInput');
             var messageBox = document.getElementById('messageBox');
 
-            // Create a new div element to display the message
+            // Get current date and time
+            var currentDate = new Date();
+            var timestamp = currentDate.toISOString();
+
+            // Create a new div element to display the message with timestamp
             var newMessage = document.createElement('div');
-            newMessage.innerText = messageInput.value;
+            newMessage.innerText = `[${timestamp}] ${messageInput.value}`;
 
             // Append the new message to the message box
             messageBox.appendChild(newMessage);
 
             // Clear the input field after sending the message
             messageInput.value = '';
+
+            // Save the message to the server (Backend functionality required)
+            saveMessageToServer(newMessage.innerText);
+        }
+
+        function saveMessageToServer(message) {
+            // Here you would send an HTTP request to your server to save the message
+            // You need a backend server for this functionality
+            // Example: Use fetch or XMLHttpRequest to send a POST request to your server
+            // and store the message in a database.
+            // For simplicity, I'm not providing the backend code here.
         }
     </script>
 </body>
