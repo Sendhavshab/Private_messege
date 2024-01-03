@@ -57,12 +57,27 @@
         }
 
         function saveMessageToServer(message) {
-            // Here you would send an HTTP request to your server to save the message
-            // You need a backend server for this functionality
-            // Example: Use fetch or XMLHttpRequest to send a POST request to your server
-            // and store the message in a database.
-            // For simplicity, I'm not providing the backend code here.
+            function saveMessageToServer(message) {
+    // Replace 'https://nodejs-1.meriidmerihihe.repl.co/' with your server URL
+    const serverURL = 'https://nodejs-1.meriidmerihihe.repl.co/';
+
+    fetch(serverURL + 'messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        return response.text();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+}
+
     </script>
 </body>
 </html>
