@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Messaging</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #messageBox {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 100px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="messageBox"></div>
+        <input type="text" id="messageInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById('messageInput');
+            var messageBox = document.getElementById('messageBox');
+
+            // Create a new div element to display the message
+            var newMessage = document.createElement('div');
+            newMessage.innerText = messageInput.value;
+
+            // Append the new message to the message box
+            messageBox.appendChild(newMessage);
+
+            // Clear the input field after sending the message
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
