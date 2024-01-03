@@ -57,27 +57,25 @@
         }
 
         function saveMessageToServer(message) {
-            function saveMessageToServer(message) {
-    // Replace 'https://nodejs-1.meriidmerihihe.repl.co/' with your server URL
-    const serverURL = 'https://nodejs-1.meriidmerihihe.repl.co/';
+            // Replace 'https://nodejs-1.meriidmerihihe.repl.co/' with your actual server URL
+            const serverURL = 'https://nodejs-1.meriidmerihihe.repl.co/';
 
-    fetch(serverURL + 'messages', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            fetch(serverURL + 'messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
         }
-        return response.text();
-    })
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-}
-
     </script>
 </body>
 </html>
